@@ -8,20 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GymSystemProject
+namespace GymSystemProject.Forms
 {
-		public partial class AdminForm : Form
+		public partial class TrainingForm : Form
 		{
-				public AdminForm()
+				public TrainingForm()
 				{
 						InitializeComponent();
-				}
-
-			
-
-				private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
-				{
-						Application.Exit();
 				}
 		}
 }

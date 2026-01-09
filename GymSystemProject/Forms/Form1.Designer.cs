@@ -1,4 +1,4 @@
-﻿namespace GymSystemProject
+﻿namespace GymSystemProject.Forms
 {
     partial class LoginPage
     {

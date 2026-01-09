@@ -1,4 +1,4 @@
-﻿namespace GymSystemProject
+﻿namespace GymSystemProject.Forms
 {
 		partial class AdminForm
 		{
@@ -28,13 +28,25 @@
 				/// </summary>
 				private void InitializeComponent()
 				{
+						log_out = new Button();
 						SuspendLayout();
+						// 
+						// log_out
+						// 
+						log_out.Location = new Point(677, 12);
+						log_out.Name = "log_out";
+						log_out.Size = new Size(94, 29);
+						log_out.TabIndex = 0;
+						log_out.Text = "log out";
+						log_out.UseVisualStyleBackColor = true;
+						log_out.Click += btnLogout_Click;
 						// 
 						// AdminForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
+						Controls.Add(log_out);
 						Name = "AdminForm";
 						Text = "AdminForm";
 						FormClosed += AdminForm_FormClosed;
@@ -42,5 +54,7 @@
 				}
 
 				#endregion
+
+				private Button log_out;
 		}
 }

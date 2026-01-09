@@ -1,4 +1,4 @@
-namespace GymSystemProject
+namespace GymSystemProject.Forms
 {
     internal static class Program
     {

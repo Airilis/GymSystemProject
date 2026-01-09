@@ -1,12 +1,22 @@
 
 
-namespace GymSystemProject
+namespace GymSystemProject.Forms
 {
 		public partial class LoginPage : Form
 		{
 				public LoginPage()
 				{
 						InitializeComponent();
+				}
+				public void ShowAgain()
+				{
+						this.Show();
+				}
+				public void ResetFields()
+				{
+						txtLogin.Clear();
+						txtPassword.Clear();
+						txtLogin.Focus();
 				}
 
 				private void btnLogin_Click(object sender, EventArgs e)
@@ -16,12 +26,12 @@ namespace GymSystemProject
 						//MessageBox.Show($"Login: {login}\nPassword: {password}");
 						if (login == "admin")
 						{
-								AdminForm adminForm=new AdminForm();
+								AdminForm adminForm = new AdminForm(this);
 								adminForm.Show();
 						}
 						else
 						{
-								UserForm userForm=new UserForm(login);
+								UserForm userForm = new UserForm(login,this);
 								userForm.Show();
 						}
 						this.Hide();
