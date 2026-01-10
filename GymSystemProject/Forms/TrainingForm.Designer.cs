@@ -28,45 +28,48 @@
 				/// </summary>
 				private void InitializeComponent()
 				{
-						label1 = new Label();
-						listBox1 = new ListBox();
-						button1 = new Button();
+						trainingChoice = new Label();
+						listBoxTrainings = new ListBox();
+						btnNext = new Button();
 						SuspendLayout();
 						// 
-						// label1
+						// trainingChoice
 						// 
-						label1.AutoSize = true;
-						label1.Location = new Point(341, 46);
-						label1.Name = "label1";
-						label1.Size = new Size(50, 20);
-						label1.TabIndex = 0;
-						label1.Text = "label1";
+						trainingChoice.AutoSize = true;
+						trainingChoice.Location = new Point(310, 46);
+						trainingChoice.Name = "trainingChoice";
+						trainingChoice.Size = new Size(125, 20);
+						trainingChoice.TabIndex = 0;
+						trainingChoice.Text = "Choose a training";
 						// 
-						// listBox1
+						// listBoxTrainings
 						// 
-						listBox1.FormattingEnabled = true;
-						listBox1.Location = new Point(296, 120);
-						listBox1.Name = "listBox1";
-						listBox1.Size = new Size(150, 104);
-						listBox1.TabIndex = 1;
+						listBoxTrainings.FormattingEnabled = true;
+						listBoxTrainings.Items.AddRange(new object[] { "Yoga", "Boxing", "Pilates" });
+						listBoxTrainings.Location = new Point(300, 146);
+						listBoxTrainings.Name = "listBoxTrainings";
+						listBoxTrainings.Size = new Size(150, 64);
+						listBoxTrainings.TabIndex = 1;
+						listBoxTrainings.SelectedIndexChanged += listBoxTrainings_SelectedIndexChanged;
 						// 
-						// button1
+						// btnNext
 						// 
-						button1.Location = new Point(351, 294);
-						button1.Name = "button1";
-						button1.Size = new Size(94, 29);
-						button1.TabIndex = 2;
-						button1.Text = "button1";
-						button1.UseVisualStyleBackColor = true;
+						btnNext.Location = new Point(329, 295);
+						btnNext.Name = "btnNext";
+						btnNext.Size = new Size(94, 29);
+						btnNext.TabIndex = 2;
+						btnNext.Text = "Next";
+						btnNext.UseVisualStyleBackColor = true;
+						btnNext.Click += btnNext_Click;
 						// 
 						// TrainingForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
-						Controls.Add(button1);
-						Controls.Add(listBox1);
-						Controls.Add(label1);
+						Controls.Add(btnNext);
+						Controls.Add(listBoxTrainings);
+						Controls.Add(trainingChoice);
 						Name = "TrainingForm";
 						Text = "TrainingForm";
 						ResumeLayout(false);
@@ -75,8 +78,8 @@
 
 				#endregion
 
-				private Label label1;
-				private ListBox listBox1;
-				private Button button1;
+				private Label trainingChoice;
+				private ListBox listBoxTrainings;
+				private Button btnNext;
 		}
 }

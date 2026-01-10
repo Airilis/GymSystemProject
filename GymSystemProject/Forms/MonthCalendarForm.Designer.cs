@@ -28,53 +28,68 @@
 				/// </summary>
 				private void InitializeComponent()
 				{
-						monthCalendar1 = new MonthCalendar();
+						monthCalendar = new MonthCalendar();
+						lblDayStatus = new Label();
+						btnNext = new Button();
 						label1 = new Label();
-						button1 = new Button();
 						SuspendLayout();
 						// 
-						// monthCalendar1
+						// monthCalendar
 						// 
-						monthCalendar1.Location = new Point(299, 99);
-						monthCalendar1.Name = "monthCalendar1";
-						monthCalendar1.TabIndex = 0;
+						monthCalendar.Location = new Point(299, 99);
+						monthCalendar.Name = "monthCalendar";
+						monthCalendar.TabIndex = 0;
+						// 
+						// lblDayStatus
+						// 
+						lblDayStatus.AutoSize = true;
+						lblDayStatus.Location = new Point(369, 324);
+						lblDayStatus.Name = "lblDayStatus";
+						lblDayStatus.Size = new Size(50, 20);
+						lblDayStatus.TabIndex = 1;
+						lblDayStatus.Text = "label1";
+						lblDayStatus.Visible = false;
+						// 
+						// btnNext
+						// 
+						btnNext.Location = new Point(351, 368);
+						btnNext.Name = "btnNext";
+						btnNext.Size = new Size(94, 29);
+						btnNext.TabIndex = 2;
+						btnNext.Text = "Next";
+						btnNext.UseVisualStyleBackColor = true;
+						btnNext.Click += btnNext_Click;
 						// 
 						// label1
 						// 
 						label1.AutoSize = true;
-						label1.Location = new Point(369, 324);
+						label1.Location = new Point(347, 60);
 						label1.Name = "label1";
-						label1.Size = new Size(50, 20);
-						label1.TabIndex = 1;
-						label1.Text = "label1";
-						// 
-						// button1
-						// 
-						button1.Location = new Point(351, 368);
-						button1.Name = "button1";
-						button1.Size = new Size(94, 29);
-						button1.TabIndex = 2;
-						button1.Text = "button1";
-						button1.UseVisualStyleBackColor = true;
+						label1.Size = new Size(98, 20);
+						label1.TabIndex = 3;
+						label1.Text = "Choose a day";
 						// 
 						// MonthCalendarForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
-						Controls.Add(button1);
 						Controls.Add(label1);
-						Controls.Add(monthCalendar1);
+						Controls.Add(btnNext);
+						Controls.Add(lblDayStatus);
+						Controls.Add(monthCalendar);
 						Name = "MonthCalendarForm";
 						Text = "MonthCalendarForm";
+						Load += MonthCalendarForm_Load;
 						ResumeLayout(false);
 						PerformLayout();
 				}
 
 				#endregion
 
-				private MonthCalendar monthCalendar1;
+				private MonthCalendar monthCalendar;
+				private Label lblDayStatus;
+				private Button btnNext;
 				private Label label1;
-				private Button button1;
 		}
 }

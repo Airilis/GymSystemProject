@@ -29,43 +29,46 @@
 				private void InitializeComponent()
 				{
 						label1 = new Label();
-						comboBox1 = new ComboBox();
-						button1 = new Button();
+						comboBoxTrainers = new ComboBox();
+						btnNext = new Button();
 						SuspendLayout();
 						// 
 						// label1
 						// 
 						label1.AutoSize = true;
-						label1.Location = new Point(365, 42);
+						label1.Location = new Point(337, 58);
 						label1.Name = "label1";
-						label1.Size = new Size(50, 20);
+						label1.Size = new Size(117, 20);
 						label1.TabIndex = 0;
-						label1.Text = "label1";
+						label1.Text = "Choose a trainer";
 						// 
-						// comboBox1
+						// comboBoxTrainers
 						// 
-						comboBox1.FormattingEnabled = true;
-						comboBox1.Location = new Point(321, 126);
-						comboBox1.Name = "comboBox1";
-						comboBox1.Size = new Size(151, 28);
-						comboBox1.TabIndex = 1;
+						comboBoxTrainers.FormattingEnabled = true;
+						comboBoxTrainers.Items.AddRange(new object[] { "1", "2", "3", "4" });
+						comboBoxTrainers.Location = new Point(321, 126);
+						comboBoxTrainers.Name = "comboBoxTrainers";
+						comboBoxTrainers.Size = new Size(151, 28);
+						comboBoxTrainers.TabIndex = 1;
+						comboBoxTrainers.SelectedIndexChanged += comboBoxTrainers_SelectedIndexChanged;
 						// 
-						// button1
+						// btnNext
 						// 
-						button1.Location = new Point(384, 241);
-						button1.Name = "button1";
-						button1.Size = new Size(94, 29);
-						button1.TabIndex = 2;
-						button1.Text = "button1";
-						button1.UseVisualStyleBackColor = true;
+						btnNext.Location = new Point(346, 244);
+						btnNext.Name = "btnNext";
+						btnNext.Size = new Size(94, 29);
+						btnNext.TabIndex = 2;
+						btnNext.Text = "Next";
+						btnNext.UseVisualStyleBackColor = true;
+						btnNext.Click += btnNext_Click;
 						// 
 						// TrainerForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
-						Controls.Add(button1);
-						Controls.Add(comboBox1);
+						Controls.Add(btnNext);
+						Controls.Add(comboBoxTrainers);
 						Controls.Add(label1);
 						Name = "TrainerForm";
 						Text = "TrainerForm";
@@ -76,7 +79,7 @@
 				#endregion
 
 				private Label label1;
-				private ComboBox comboBox1;
-				private Button button1;
+				private ComboBox comboBoxTrainers;
+				private Button btnNext;
 		}
 }

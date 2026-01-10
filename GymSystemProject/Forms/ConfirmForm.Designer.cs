@@ -28,46 +28,47 @@
 				/// </summary>
 				private void InitializeComponent()
 				{
+						lblSummary = new Label();
+						btnConfirm = new Button();
 						label1 = new Label();
-						label2 = new Label();
-						button1 = new Button();
 						SuspendLayout();
+						// 
+						// lblSummary
+						// 
+						lblSummary.AutoSize = true;
+						lblSummary.Location = new Point(379, 126);
+						lblSummary.Name = "lblSummary";
+						lblSummary.Size = new Size(50, 20);
+						lblSummary.TabIndex = 1;
+						lblSummary.Text = "label2";
+						// 
+						// btnConfirm
+						// 
+						btnConfirm.Location = new Point(271, 230);
+						btnConfirm.Name = "btnConfirm";
+						btnConfirm.Size = new Size(94, 29);
+						btnConfirm.TabIndex = 2;
+						btnConfirm.Text = "Confirm";
+						btnConfirm.UseVisualStyleBackColor = true;
+						btnConfirm.Click += btnConfirm_Click;
 						// 
 						// label1
 						// 
 						label1.AutoSize = true;
-						label1.Location = new Point(379, 70);
+						label1.Location = new Point(333, 55);
 						label1.Name = "label1";
-						label1.Size = new Size(50, 20);
-						label1.TabIndex = 0;
-						label1.Text = "label1";
-						// 
-						// label2
-						// 
-						label2.AutoSize = true;
-						label2.Location = new Point(386, 128);
-						label2.Name = "label2";
-						label2.Size = new Size(50, 20);
-						label2.TabIndex = 1;
-						label2.Text = "label2";
-						// 
-						// button1
-						// 
-						button1.Location = new Point(355, 227);
-						button1.Name = "button1";
-						button1.Size = new Size(94, 29);
-						button1.TabIndex = 2;
-						button1.Text = "button1";
-						button1.UseVisualStyleBackColor = true;
+						label1.Size = new Size(142, 20);
+						label1.TabIndex = 3;
+						label1.Text = "Confirm your choice";
 						// 
 						// ConfirmForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
-						Controls.Add(button1);
-						Controls.Add(label2);
 						Controls.Add(label1);
+						Controls.Add(btnConfirm);
+						Controls.Add(lblSummary);
 						Name = "ConfirmForm";
 						Text = "ConfirmForm";
 						ResumeLayout(false);
@@ -75,9 +76,8 @@
 				}
 
 				#endregion
-
+				private Label lblSummary;
+				private Button btnConfirm;
 				private Label label1;
-				private Label label2;
-				private Button button1;
 		}
 }

@@ -39,5 +39,21 @@ namespace GymSystemProject.Forms
 						loginForm.ShowAgain();
 						this.Close();
 				}
+
+				private void btnEnroll_Click(object sender, EventArgs e)
+				{
+						EnrollmentalData data = new EnrollmentalData
+						{
+								//UserLogin = "testUser",
+								//MembershipActive = false,
+								//MembershipEndDate = DateTime.MinValue
+								UserLogin = currentUser,
+								UserForm = this
+						};						
+						
+						MembershipForm membershipForm = new MembershipForm(data,this);
+						membershipForm.Show();
+						this.Hide();
+				}
 		}
 }
