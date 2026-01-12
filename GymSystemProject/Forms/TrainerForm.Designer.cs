@@ -29,8 +29,8 @@
 				private void InitializeComponent()
 				{
 						label1 = new Label();
-						comboBoxTrainers = new ComboBox();
 						btnNext = new Button();
+						listBoxTrainer = new ListBox();
 						SuspendLayout();
 						// 
 						// label1
@@ -42,16 +42,6 @@
 						label1.TabIndex = 0;
 						label1.Text = "Choose a trainer";
 						// 
-						// comboBoxTrainers
-						// 
-						comboBoxTrainers.FormattingEnabled = true;
-						comboBoxTrainers.Items.AddRange(new object[] { "1", "2", "3", "4" });
-						comboBoxTrainers.Location = new Point(321, 126);
-						comboBoxTrainers.Name = "comboBoxTrainers";
-						comboBoxTrainers.Size = new Size(151, 28);
-						comboBoxTrainers.TabIndex = 1;
-						comboBoxTrainers.SelectedIndexChanged += comboBoxTrainers_SelectedIndexChanged;
-						// 
 						// btnNext
 						// 
 						btnNext.Location = new Point(346, 244);
@@ -62,13 +52,23 @@
 						btnNext.UseVisualStyleBackColor = true;
 						btnNext.Click += btnNext_Click;
 						// 
+						// listBoxTrainer
+						// 
+						listBoxTrainer.FormattingEnabled = true;
+						listBoxTrainer.Items.AddRange(new object[] { "Alfa", "Betta", "Gamma", "Delta" });
+						listBoxTrainer.Location = new Point(346, 115);
+						listBoxTrainer.Name = "listBoxTrainer";
+						listBoxTrainer.Size = new Size(82, 84);
+						listBoxTrainer.TabIndex = 3;
+						listBoxTrainer.SelectedIndexChanged += listBoxTrainer_SelectedIndexChanged;
+						// 
 						// TrainerForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
+						Controls.Add(listBoxTrainer);
 						Controls.Add(btnNext);
-						Controls.Add(comboBoxTrainers);
 						Controls.Add(label1);
 						Name = "TrainerForm";
 						Text = "TrainerForm";
@@ -79,7 +79,7 @@
 				#endregion
 
 				private Label label1;
-				private ComboBox comboBoxTrainers;
 				private Button btnNext;
+				private ListBox listBoxTrainer;
 		}
 }

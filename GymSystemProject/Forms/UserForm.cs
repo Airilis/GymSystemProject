@@ -14,8 +14,8 @@ namespace GymSystemProject.Forms
 				private string currentUser;
 				private LoginPage loginForm;
 				private bool isLoggingOut = false;
-				private List<Training> allTrainings = new List<Training>();
-				private List<UserTraining> userTrainings = new List<UserTraining>();
+				//private List<Training> allTrainings = new List<Training>();
+				//private List<UserTraining> userTrainings = new List<UserTraining>();
 
 				public UserForm(string login, LoginPage form)
 				{

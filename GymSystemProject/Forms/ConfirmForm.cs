@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using GymSystemProject.Services;
 namespace GymSystemProject.Forms
 {
 		public partial class ConfirmForm : Form
@@ -34,6 +34,16 @@ namespace GymSystemProject.Forms
 
 				private void btnConfirm_Click(object sender, EventArgs e)
 				{
+						EnrollmentRecord record = new EnrollmentRecord
+						{
+								UserLogin = data.UserLogin,
+								Training = data.Training,
+								Trainer = data.Trainer,
+								TrainingDate = data.TrainingDate,
+								MembershipEndDate = data.MembershipEndDate
+						};
+
+						JsonStorage.SaveEnrollment(record);
 						MessageBox.Show(
 										"Вы успешно записаны на тренировку!",
 										"Готово",
