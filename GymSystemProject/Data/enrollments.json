@@ -1,0 +1,16 @@
+[
+  {
+    "UserLogin": "testeruser",
+    "Training": "Boxing",
+    "Trainer": "Alfa",
+    "TrainingDate": "2026-01-31T00:00:00",
+    "MembershipEndDate": "2026-04-12T17:44:55.9920604+02:00"
+  },
+  {
+    "UserLogin": "test1",
+    "Training": "Boxing",
+    "Trainer": "Alfa",
+    "TrainingDate": "2026-02-19T00:00:00",
+    "MembershipEndDate": "2026-04-12T18:03:25.6539839+02:00"
+  }
+]
