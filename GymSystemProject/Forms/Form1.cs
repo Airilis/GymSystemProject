@@ -1,5 +1,7 @@
 
 
+using GymSystemProject.Models;
+
 namespace GymSystemProject.Forms
 {
 		public partial class LoginPage : Form
@@ -31,7 +33,12 @@ namespace GymSystemProject.Forms
 						}
 						else
 						{
-								UserForm userForm = new UserForm(login,this);
+								EnrollmentalData data = new EnrollmentalData
+								{
+										UserLogin = login,
+										LoginForm = this
+								};
+								UserForm userForm = new UserForm(data);
 								userForm.Show();
 						}
 						this.Hide();

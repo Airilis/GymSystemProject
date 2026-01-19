@@ -1,56 +1,48 @@
-﻿using System;
+﻿using GymSystemProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.DataFormats;
-using GymSystemProject.Models;
 
 namespace GymSystemProject.Forms
 {
+
 		public partial class UserForm : Form
 		{
 				private string currentUser;
+				private EnrollmentalData data;
 				private LoginPage loginForm;
-				private bool isLoggingOut = false;
-				//private List<Training> allTrainings = new List<Training>();
-				//private List<UserTraining> userTrainings = new List<UserTraining>();
-
-				public UserForm(string login, LoginPage form)
+				public UserForm(EnrollmentalData data)
 				{
 						InitializeComponent();
-						currentUser = login;
-						loginForm = form;
+						this.data = data;
 				}
 
 				private void UserForm_FormClosed(object sender, FormClosedEventArgs e)
-				{
-						if (!isLoggingOut)
-						{
-								Application.Exit();
-						}
+				{						
+								Application.Exit();						
 				}
 
 				private void btnLogout_Click(object sender, EventArgs e)
 				{
-						isLoggingOut = true;
-						loginForm.ResetFields();
-						loginForm.ShowAgain();
-						this.Close();
+						if (data.LoginForm == null)
+						{
+								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								return;
+						}
+						data.LoginForm.ResetFields();
+						data.LoginForm.Show();
+						this.Hide();
 				}
 
 				private void btnEnroll_Click(object sender, EventArgs e)
 				{
-						EnrollmentalData data = new EnrollmentalData
-						{
-								//UserLogin = "testUser",
-								//MembershipActive = false,
-								//MembershipEndDate = DateTime.MinValue
-								UserLogin = currentUser,
-								UserForm = this
-						};						
 						
+						data.UserForm = this;
 						MembershipForm membershipForm = new MembershipForm(data,this);
 						membershipForm.Show();
 						this.Hide();

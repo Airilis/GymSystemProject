@@ -1,0 +1,18 @@
+Liczba klientów: 4
+Liczba treningów: 5
+Średnia liczba treningów na klienta: 1.25
+
+Najpopularniejsze dni tygodnia:
+  Sobota: 4
+  Piątek: 1
+
+Top treningi:
+  Boxing: 2
+  Pilates: 2
+  Yoga: 1
+
+Top trenerzy:
+  Alfa: 2
+  Gamma: 1
+  Delta: 1
+  Betta: 1

@@ -14,9 +14,10 @@ namespace GymSystemProject.Forms
 		public partial class MonthCalendarForm : Form
 		{
 				private EnrollmentalData data;
-		
-				private Form previousForm;
 
+				private Form previousForm;
+			//	private LoginPage loginForm;
+				//private bool isLoggingOut = false;
 				public MonthCalendarForm(EnrollmentalData data, Form previousForm)
 				{
 						InitializeComponent();
@@ -43,7 +44,10 @@ namespace GymSystemProject.Forms
 						monthCalendar.MinDate = DateTime.Today;
 						monthCalendar.MaxDate = data.MembershipEndDate.Date;
 				}
-
+				private void MonthCalendarForm_FormClosed(object sender, FormClosedEventArgs e)
+				{
+						Application.Exit();
+				}
 				private void btnNext_Click(object sender, EventArgs e)
 				{
 						DateTime selectedDate = monthCalendar.SelectionStart.Date;
@@ -67,5 +71,29 @@ namespace GymSystemProject.Forms
 						this.Hide();
 				}
 
+				private void btnLogout_Click(object sender, EventArgs e)
+				{
+						if (data.LoginForm == null)
+						{
+								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								return;
+						}
+						data.LoginForm.ResetFields();
+						data.LoginForm.Show();
+						this.Hide();
+				}
+
+				private void btnBack_Click(object sender, EventArgs e)
+				{
+						if (previousForm != null)
+						{
+								this.Hide();
+								previousForm.Show();
+						}
+						else
+						{
+								MessageBox.Show("Предыдущая форма недоступна");
+						}
+				}
 		}
 }

@@ -33,6 +33,7 @@
 						chkBuyMembership = new CheckBox();
 						btnBack = new Button();
 						lblMembershipStatus = new Label();
+						btnLogout = new Button();
 						SuspendLayout();
 						// 
 						// currentMembership
@@ -46,7 +47,7 @@
 						// 
 						// btnNext
 						// 
-						btnNext.Location = new Point(264, 252);
+						btnNext.Location = new Point(372, 252);
 						btnNext.Name = "btnNext";
 						btnNext.Size = new Size(94, 29);
 						btnNext.TabIndex = 2;
@@ -67,7 +68,7 @@
 						// 
 						// btnBack
 						// 
-						btnBack.Location = new Point(413, 252);
+						btnBack.Location = new Point(272, 252);
 						btnBack.Name = "btnBack";
 						btnBack.Size = new Size(94, 29);
 						btnBack.TabIndex = 4;
@@ -85,11 +86,22 @@
 						lblMembershipStatus.Text = "label1";
 						lblMembershipStatus.Click += lblMembershipStatus_Click;
 						// 
+						// btnLogout
+						// 
+						btnLogout.Location = new Point(694, 12);
+						btnLogout.Name = "btnLogout";
+						btnLogout.Size = new Size(94, 29);
+						btnLogout.TabIndex = 6;
+						btnLogout.Text = "log out";
+						btnLogout.UseVisualStyleBackColor = true;
+						btnLogout.Click += btnLogout_Click;
+						// 
 						// MembershipForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
+						Controls.Add(btnLogout);
 						Controls.Add(lblMembershipStatus);
 						Controls.Add(btnBack);
 						Controls.Add(chkBuyMembership);
@@ -97,6 +109,7 @@
 						Controls.Add(currentMembership);
 						Name = "MembershipForm";
 						Text = "MembershipForm";
+						FormClosed += MembershipForm_FormClosed;
 						Shown += MembershipForm_Shown;
 						ResumeLayout(false);
 						PerformLayout();
@@ -109,5 +122,6 @@
 				private CheckBox chkBuyMembership;
 				private Button btnBack;
 				private Label lblMembershipStatus;
+				private Button btnLogout;
 		}
 }

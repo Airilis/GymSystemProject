@@ -29,11 +29,12 @@
 				private void InitializeComponent()
 				{
 						log_out = new Button();
+						btnGenerateReport = new Button();
 						SuspendLayout();
 						// 
 						// log_out
 						// 
-						log_out.Location = new Point(677, 12);
+						log_out.Location = new Point(694, 12);
 						log_out.Name = "log_out";
 						log_out.Size = new Size(94, 29);
 						log_out.TabIndex = 0;
@@ -41,11 +42,22 @@
 						log_out.UseVisualStyleBackColor = true;
 						log_out.Click += btnLogout_Click;
 						// 
+						// btnGenerateReport
+						// 
+						btnGenerateReport.Location = new Point(322, 192);
+						btnGenerateReport.Name = "btnGenerateReport";
+						btnGenerateReport.Size = new Size(173, 29);
+						btnGenerateReport.TabIndex = 1;
+						btnGenerateReport.Text = "generate report";
+						btnGenerateReport.UseVisualStyleBackColor = true;
+						btnGenerateReport.Click += btnGenerateReport_Click;
+						// 
 						// AdminForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
+						Controls.Add(btnGenerateReport);
 						Controls.Add(log_out);
 						Name = "AdminForm";
 						Text = "AdminForm";
@@ -56,5 +68,6 @@
 				#endregion
 
 				private Button log_out;
+				private Button btnGenerateReport;
 		}
 }

@@ -17,6 +17,8 @@ namespace GymSystemProject.Forms
 				//	private Form userForm;
 				//private bool membershipActive = false;
 				private Form previousForm;
+			//	private LoginPage loginForm;
+				//private bool isLoggingOut = false;
 
 				public MembershipForm(EnrollmentalData data, Form previousForm)
 				{
@@ -42,7 +44,10 @@ namespace GymSystemProject.Forms
 								ShowNoMembership();
 						}
 				}
-
+				private void MembershipForm_FormClosed(object sender, FormClosedEventArgs e)
+				{
+						Application.Exit();
+				}
 				private void ShowActiveMembership()
 				{
 						TimeSpan remaining = data.MembershipEndDate - DateTime.Now;
@@ -92,7 +97,17 @@ namespace GymSystemProject.Forms
 						}
 				}
 
-
+				private void btnLogout_Click(object sender, EventArgs e)
+				{
+						if (data.LoginForm == null)
+						{
+								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								return;
+						}
+						data.LoginForm.ResetFields();
+						data.LoginForm.Show();
+						this.Hide();
+				}
 				private void btnBack_Click(object sender, EventArgs e)
 				{
 						if (previousForm != null)

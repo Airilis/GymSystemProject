@@ -13,10 +13,11 @@ namespace GymSystemProject.Forms
 {
 		public partial class ConfirmForm : Form
 		{
-				private Form userForm;
+			//	private Form userForm;
 				private EnrollmentalData data;
 				private Form previousForm;
-
+				///private LoginPage loginForm;
+				//private bool isLoggingOut = false;
 				public ConfirmForm(EnrollmentalData data, Form previousForm)
 				{
 						InitializeComponent();
@@ -31,7 +32,10 @@ namespace GymSystemProject.Forms
 										$"Тренер: {data.Trainer}\n" +
 										$"Дата: {data.TrainingDate:dd.MM.yyyy}";
 				}
-
+				private void ConfirmForm_FormClosed(object sender, FormClosedEventArgs e)
+				{
+						Application.Exit();
+				}
 				private void btnConfirm_Click(object sender, EventArgs e)
 				{
 						EnrollmentRecord record = new EnrollmentRecord
@@ -58,5 +62,29 @@ namespace GymSystemProject.Forms
 						this.Close();
 				}
 
+				private void btnLogout_Click(object sender, EventArgs e)
+				{
+						if (data.LoginForm == null)
+						{
+								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								return;
+						}
+						data.LoginForm.ResetFields();
+						data.LoginForm.Show();
+						this.Hide();
+				}
+
+				private void btnBack_Click(object sender, EventArgs e)
+				{
+						if (previousForm != null)
+						{
+								this.Hide();
+								previousForm.Show();
+						}
+						else
+						{
+								MessageBox.Show("Предыдущая форма недоступна");
+						}
+				}
 		}
 }

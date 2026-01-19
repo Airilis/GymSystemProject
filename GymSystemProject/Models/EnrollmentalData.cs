@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using GymSystemProject.Forms;
 namespace GymSystemProject.Models
 {
 		public class EnrollmentalData
 		{
 				//данные для работы программы, не нужны для записи в json
-				public Form UserForm { get; set; }
-
+				public UserForm UserForm { get; set; }
+				public LoginPage LoginForm { get; set; }
 				// Абонемент
 				public bool MembershipActive { get; set; }
 				public DateTime MembershipEndDate { get; set; }

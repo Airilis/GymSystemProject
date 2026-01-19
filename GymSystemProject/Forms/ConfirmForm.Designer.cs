@@ -31,6 +31,8 @@
 						lblSummary = new Label();
 						btnConfirm = new Button();
 						label1 = new Label();
+						btnLogout = new Button();
+						btnBack = new Button();
 						SuspendLayout();
 						// 
 						// lblSummary
@@ -44,7 +46,7 @@
 						// 
 						// btnConfirm
 						// 
-						btnConfirm.Location = new Point(271, 230);
+						btnConfirm.Location = new Point(400, 233);
 						btnConfirm.Name = "btnConfirm";
 						btnConfirm.Size = new Size(94, 29);
 						btnConfirm.TabIndex = 2;
@@ -61,16 +63,39 @@
 						label1.TabIndex = 3;
 						label1.Text = "Confirm your choice";
 						// 
+						// btnLogout
+						// 
+						btnLogout.Location = new Point(694, 12);
+						btnLogout.Name = "btnLogout";
+						btnLogout.Size = new Size(94, 29);
+						btnLogout.TabIndex = 12;
+						btnLogout.Text = "log out";
+						btnLogout.UseVisualStyleBackColor = true;
+						btnLogout.Click += btnLogout_Click;
+						// 
+						// btnBack
+						// 
+						btnBack.Location = new Point(300, 233);
+						btnBack.Name = "btnBack";
+						btnBack.Size = new Size(94, 29);
+						btnBack.TabIndex = 13;
+						btnBack.Text = "back";
+						btnBack.UseVisualStyleBackColor = true;
+						btnBack.Click += btnBack_Click;
+						// 
 						// ConfirmForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
+						Controls.Add(btnBack);
+						Controls.Add(btnLogout);
 						Controls.Add(label1);
 						Controls.Add(btnConfirm);
 						Controls.Add(lblSummary);
 						Name = "ConfirmForm";
 						Text = "ConfirmForm";
+						FormClosed += ConfirmForm_FormClosed;
 						ResumeLayout(false);
 						PerformLayout();
 				}
@@ -79,5 +104,7 @@
 				private Label lblSummary;
 				private Button btnConfirm;
 				private Label label1;
+				private Button btnLogout;
+				private Button btnBack;
 		}
 }

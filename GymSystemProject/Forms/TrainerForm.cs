@@ -16,8 +16,9 @@ namespace GymSystemProject.Forms
 				private EnrollmentalData data;
 				//	private Form userForm;
 				private Form previousForm;
-
-				public TrainerForm(EnrollmentalData data)
+			//	private LoginPage loginForm;
+				//private bool isLoggingOut = false;
+				public TrainerForm(EnrollmentalData data, Form previousForm)
 				{
 						InitializeComponent();
 						this.data = data;
@@ -25,8 +26,11 @@ namespace GymSystemProject.Forms
 						this.previousForm = previousForm;
 
 				}
+				private void TrainerForm_FormClosed(object sender, FormClosedEventArgs e)
+				{
+						Application.Exit();
+				}
 
-				
 
 				private void btnNext_Click(object sender, EventArgs e)
 				{
@@ -45,6 +49,31 @@ namespace GymSystemProject.Forms
 				private void listBoxTrainer_SelectedIndexChanged(object sender, EventArgs e)
 				{
 
+				}
+
+				private void btnBack_Click(object sender, EventArgs e)
+				{
+						if (previousForm != null)
+						{
+								this.Hide();
+								previousForm.Show();
+						}
+						else
+						{
+								MessageBox.Show("Предыдущая форма недоступна");
+						}
+				}
+
+				private void btnLogout_Click(object sender, EventArgs e)
+				{
+						if (data.LoginForm == null)
+						{
+								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								return;
+						}
+						data.LoginForm.ResetFields();
+						data.LoginForm.Show();
+						this.Hide();
 				}
 		}
 }

@@ -34,7 +34,7 @@
 						// 
 						// log_out
 						// 
-						log_out.Location = new Point(675, 12);
+						log_out.Location = new Point(694, 12);
 						log_out.Name = "log_out";
 						log_out.Size = new Size(94, 29);
 						log_out.TabIndex = 0;

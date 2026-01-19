@@ -31,6 +31,8 @@
 						label1 = new Label();
 						btnNext = new Button();
 						listBoxTrainer = new ListBox();
+						btnBack = new Button();
+						btnLogout = new Button();
 						SuspendLayout();
 						// 
 						// label1
@@ -44,7 +46,7 @@
 						// 
 						// btnNext
 						// 
-						btnNext.Location = new Point(346, 244);
+						btnNext.Location = new Point(394, 244);
 						btnNext.Name = "btnNext";
 						btnNext.Size = new Size(94, 29);
 						btnNext.TabIndex = 2;
@@ -62,16 +64,39 @@
 						listBoxTrainer.TabIndex = 3;
 						listBoxTrainer.SelectedIndexChanged += listBoxTrainer_SelectedIndexChanged;
 						// 
+						// btnBack
+						// 
+						btnBack.Location = new Point(294, 244);
+						btnBack.Name = "btnBack";
+						btnBack.Size = new Size(94, 29);
+						btnBack.TabIndex = 10;
+						btnBack.Text = "back";
+						btnBack.UseVisualStyleBackColor = true;
+						btnBack.Click += btnBack_Click;
+						// 
+						// btnLogout
+						// 
+						btnLogout.Location = new Point(694, 12);
+						btnLogout.Name = "btnLogout";
+						btnLogout.Size = new Size(94, 29);
+						btnLogout.TabIndex = 11;
+						btnLogout.Text = "log out";
+						btnLogout.UseVisualStyleBackColor = true;
+						btnLogout.Click += btnLogout_Click;
+						// 
 						// TrainerForm
 						// 
 						AutoScaleDimensions = new SizeF(8F, 20F);
 						AutoScaleMode = AutoScaleMode.Font;
 						ClientSize = new Size(800, 450);
+						Controls.Add(btnLogout);
+						Controls.Add(btnBack);
 						Controls.Add(listBoxTrainer);
 						Controls.Add(btnNext);
 						Controls.Add(label1);
 						Name = "TrainerForm";
 						Text = "TrainerForm";
+						FormClosed += TrainerForm_FormClosed;
 						ResumeLayout(false);
 						PerformLayout();
 				}
@@ -81,5 +106,7 @@
 				private Label label1;
 				private Button btnNext;
 				private ListBox listBoxTrainer;
+				private Button btnBack;
+				private Button btnLogout;
 		}
 }
