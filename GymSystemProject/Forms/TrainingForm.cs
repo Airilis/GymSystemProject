@@ -1,12 +1,6 @@
 ﻿using GymSystemProject.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GymSystemProject.Forms
@@ -14,41 +8,43 @@ namespace GymSystemProject.Forms
 		public partial class TrainingForm : Form
 		{
 				private EnrollmentalData data;
-				//private Form userForm;
 				private Form previousForm;
-				//private LoginPage loginForm;
-				//private bool isLoggingOut = false;
+
 				public TrainingForm(EnrollmentalData data, Form previousForm)
 				{
 						InitializeComponent();
 						this.data = data;
-						//this.userForm = userForm;
 						this.previousForm = previousForm;
+						this.StartPosition = FormStartPosition.CenterScreen;
 				}
 
 				private void listBoxTrainings_SelectedIndexChanged(object sender, EventArgs e)
 				{
-
+						// Currently no action
 				}
+
 				private void TrainingForm_FormClosed(object sender, FormClosedEventArgs e)
 				{
 						Application.Exit();
 				}
+
+				// Next button: save selected training and go to trainer selection
 				private void btnNext_Click(object sender, EventArgs e)
 				{
 						if (listBoxTrainings.SelectedItem == null)
 						{
-								MessageBox.Show("Выберите тренировку");
+								MessageBox.Show("Please select a training", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 								return;
 						}
 
 						data.Training = listBoxTrainings.SelectedItem.ToString();
 
-						TrainerForm trainerForm = new TrainerForm(data,this);
+						TrainerForm trainerForm = new TrainerForm(data, this);
 						trainerForm.Show();
 						this.Hide();
 				}
 
+				// Back button: return to previous form
 				private void btnBack_Click(object sender, EventArgs e)
 				{
 						if (previousForm != null)
@@ -58,17 +54,19 @@ namespace GymSystemProject.Forms
 						}
 						else
 						{
-								MessageBox.Show("Предыдущая форма недоступна");
+								MessageBox.Show("Previous form unavailable");
 						}
 				}
 
+				// Logout button: return to login form
 				private void btnLogout_Click(object sender, EventArgs e)
 				{
 						if (data.LoginForm == null)
 						{
-								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								MessageBox.Show("LoginForm is null (data transfer error)");
 								return;
 						}
+
 						data.LoginForm.ResetFields();
 						data.LoginForm.Show();
 						this.Hide();

@@ -1,27 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GymSystemProject.Forms;
+
 namespace GymSystemProject.Models
 {
 		public class EnrollmentalData
 		{
-				//данные для работы программы, не нужны для записи в json
+				// Runtime-only references, not saved to JSON
 				public UserForm UserForm { get; set; }
 				public LoginPage LoginForm { get; set; }
-				// Абонемент
+
+				// Membership info
 				public bool MembershipActive { get; set; }
 				public DateTime MembershipEndDate { get; set; }
 
-
-				// Выбор пользователя
+				// User selections
 				public string Training { get; set; }
 				public string Trainer { get; set; }
 				public DateTime TrainingDate { get; set; }
 
-				// Пользователь (на будущее: JSON, списки)
+				// User info (for future: JSON storage, lists)
 				public string UserLogin { get; set; }
 		}
 }

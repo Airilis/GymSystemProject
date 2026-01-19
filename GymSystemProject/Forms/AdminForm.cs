@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
-using static System.Windows.Forms.DataFormats;
 
 namespace GymSystemProject.Forms
 {
@@ -21,16 +14,14 @@ namespace GymSystemProject.Forms
 				{
 						InitializeComponent();
 						loginForm = form;
+						this.StartPosition = FormStartPosition.CenterScreen;
 				}
-
-
 
 				private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
 				{
-
 						Application.Exit();
-
 				}
+
 				private void btnLogout_Click(object sender, EventArgs e)
 				{
 						isLoggingOut = true;
@@ -46,18 +37,18 @@ namespace GymSystemProject.Forms
 								string baseDir = AppDomain.CurrentDomain.BaseDirectory;
 								string dataDir = Path.Combine(baseDir, "Data");
 
-								string pythonExe = "python"; // если python в PATH
+								string pythonExe = "python"; // assuming python is in PATH
 								string scriptPath = Path.Combine(dataDir, "analyzer.py");
 
 								string reportPath = Path.Combine(dataDir, "report.txt");
 
 								if (!File.Exists(scriptPath))
 								{
-										MessageBox.Show("Файл analyzer.py не найден");
+										MessageBox.Show("Analyzer.py file not found");
 										return;
 								}
 
-								// 1️⃣ Запуск Python-скрипта
+								//  Run Python script
 								ProcessStartInfo psi = new ProcessStartInfo
 								{
 										FileName = pythonExe,
@@ -70,7 +61,7 @@ namespace GymSystemProject.Forms
 								Process process = Process.Start(psi);
 								process.WaitForExit();
 
-								// 2️⃣ Открытие отчёта
+								//  Open report
 								if (File.Exists(reportPath))
 								{
 										Process.Start(new ProcessStartInfo
@@ -81,12 +72,12 @@ namespace GymSystemProject.Forms
 								}
 								else
 								{
-										MessageBox.Show("Отчёт не был создан");
+										MessageBox.Show("Report was not created");
 								}
 						}
 						catch (Exception ex)
 						{
-								MessageBox.Show("Ошибка при создании отчёта:\n" + ex.Message);
+								MessageBox.Show("Error generating report:\n" + ex.Message);
 						}
 				}
 		}

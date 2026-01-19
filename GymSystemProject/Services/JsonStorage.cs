@@ -13,6 +13,7 @@ namespace GymSystemProject.Services
 				{
 						List<EnrollmentRecord> records = new List<EnrollmentRecord>();
 
+						// Load existing records if the file exists
 						if (File.Exists(filePath))
 						{
 								string existingJson = File.ReadAllText(filePath);
@@ -20,13 +21,16 @@ namespace GymSystemProject.Services
 																		?? new List<EnrollmentRecord>();
 						}
 
+						// Add new record
 						records.Add(record);
 
+						// Serialize to JSON with indentation
 						string json = JsonSerializer.Serialize(records, new JsonSerializerOptions
 						{
 								WriteIndented = true
 						});
 
+						// Ensure "Data" directory exists
 						Directory.CreateDirectory("Data");
 						File.WriteAllText(filePath, json);
 				}

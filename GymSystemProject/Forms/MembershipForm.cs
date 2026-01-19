@@ -1,12 +1,5 @@
 ﻿using GymSystemProject.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GymSystemProject.Forms
@@ -14,19 +7,17 @@ namespace GymSystemProject.Forms
 		public partial class MembershipForm : Form
 		{
 				private EnrollmentalData data;
-				//	private Form userForm;
-				//private bool membershipActive = false;
 				private Form previousForm;
-			//	private LoginPage loginForm;
-				//private bool isLoggingOut = false;
 
 				public MembershipForm(EnrollmentalData data, Form previousForm)
 				{
 						InitializeComponent();
 						this.data = data;
 						this.previousForm = previousForm;
-
+						this.StartPosition = FormStartPosition.CenterScreen;
 				}
+
+				// Called when form is shown
 				private void MembershipForm_Shown(object sender, EventArgs e)
 				{
 						lblMembershipStatus.Text = "";
@@ -44,26 +35,31 @@ namespace GymSystemProject.Forms
 								ShowNoMembership();
 						}
 				}
+
 				private void MembershipForm_FormClosed(object sender, FormClosedEventArgs e)
 				{
 						Application.Exit();
 				}
+
+				// Display active membership info
 				private void ShowActiveMembership()
 				{
 						TimeSpan remaining = data.MembershipEndDate - DateTime.Now;
 
 						lblMembershipStatus.Text =
-										$"Абонемент активен\n" +
-										$"Осталось дней: {remaining.Days}";
+										$"Membership active\n" +
+										$"Days remaining: {remaining.Days}";
 
 						chkBuyMembership.Visible = false;
 						btnNext.Visible = true;
 				}
+
+				// Display message for users without membership
 				private void ShowNoMembership()
 				{
 						lblMembershipStatus.Text =
-										"Абонемент отсутствует.\n" +
-										"Необходимо купить абонемент на 90 дней.";
+										"No membership found.\n" +
+										"You need to purchase a 90-day membership.";
 
 						chkBuyMembership.Visible = true;
 						btnNext.Visible = false;
@@ -71,7 +67,7 @@ namespace GymSystemProject.Forms
 
 				private void dtpMembershipEnd_ValueChanged(object sender, EventArgs e)
 				{
-
+						// Currently no action
 				}
 
 				private void btnNext_Click(object sender, EventArgs e)
@@ -80,7 +76,6 @@ namespace GymSystemProject.Forms
 						trainingForm.Show();
 						this.Hide();
 				}
-
 
 				private void chkBuyMembership_CheckedChanged(object sender, EventArgs e)
 				{
@@ -97,17 +92,20 @@ namespace GymSystemProject.Forms
 						}
 				}
 
+				// Logout button: return to login form
 				private void btnLogout_Click(object sender, EventArgs e)
 				{
 						if (data.LoginForm == null)
 						{
-								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								MessageBox.Show("LoginForm is null (data transfer error)");
 								return;
 						}
 						data.LoginForm.ResetFields();
 						data.LoginForm.Show();
 						this.Hide();
 				}
+
+				// Back button: return to previous form
 				private void btnBack_Click(object sender, EventArgs e)
 				{
 						if (previousForm != null)
@@ -117,13 +115,13 @@ namespace GymSystemProject.Forms
 						}
 						else
 						{
-								MessageBox.Show("Предыдущая форма недоступна");
+								MessageBox.Show("Previous form unavailable");
 						}
 				}
 
 				private void lblMembershipStatus_Click(object sender, EventArgs e)
 				{
-
+						// Currently no action
 				}
 		}
 }

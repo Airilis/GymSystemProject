@@ -3,7 +3,7 @@ import json
 from collections import Counter
 from datetime import datetime
 
-# Словник для перекладу днів тижня
+# Dictionary to translate weekdays to Polish (can be adjusted)
 DAYS_POLISH = {
     "Monday": "Poniedziałek",
     "Tuesday": "Wtorek",
@@ -24,6 +24,7 @@ class GymAnalyzer:
         self.enrollments = []
 
     def find_enrollments_file(self):
+        # Search for enrollments.json starting from parent directory
         start_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
         for root, dirs, files in os.walk(start_dir):
             if "enrollments.json" in files:
@@ -32,7 +33,7 @@ class GymAnalyzer:
 
     def load_data(self):
         if not self.enrollments_file or not os.path.exists(self.enrollments_file):
-            print("Plik enrollments.json nie istnieje!")
+            print("File enrollments.json does not exist!")
             return False
 
         with open(self.enrollments_file, "r", encoding="utf-8") as f:
@@ -41,12 +42,13 @@ class GymAnalyzer:
 
     def analyze(self):
         if not self.enrollments:
-            print("Brak danych do analizy!")
+            print("No data to analyze!")
             return
 
         total_clients = len(set(e["UserLogin"] for e in self.enrollments))
         total_trainings = len(self.enrollments)
 
+        # Convert training dates to weekday names in Polish
         days = [
             DAYS_POLISH[
                 datetime.fromisoformat(e["TrainingDate"]).strftime("%A")
@@ -55,10 +57,9 @@ class GymAnalyzer:
         ]
 
         day_counts = Counter(days)
-
         trainings = Counter(e["Training"] for e in self.enrollments)
         clients = Counter(e["UserLogin"] for e in self.enrollments)
-        trainers = Counter(e.get("Trainer", "Nieznany") for e in self.enrollments)
+        trainers = Counter(e.get("Trainer", "Unknown") for e in self.enrollments)
 
         self.report_data = {
             "total_clients": total_clients,
@@ -79,33 +80,32 @@ class GymAnalyzer:
 
     def save_report(self):
         if not hasattr(self, "report_data"):
-            print("Brak danych do raportu!")
+            print("No data available for report!")
             return
 
         lines = []
-        lines.append(f"Liczba klientów: {self.report_data['total_clients']}")
-        lines.append(f"Liczba treningów: {self.report_data['total_trainings']}")
+        lines.append(f"Total clients: {self.report_data['total_clients']}")
+        lines.append(f"Total trainings: {self.report_data['total_trainings']}")
         lines.append(
-            f"Średnia liczba treningów na klienta: "
-            f"{self.report_data['avg_trainings_per_client']}\n"
+            f"Average trainings per client: {self.report_data['avg_trainings_per_client']}\n"
         )
 
-        lines.append("Najpopularniejsze dni tygodnia:")
+        lines.append("Most popular weekdays (top 3):")
         for day, count in self.report_data["most_popular_days"]:
             lines.append(f"  {day}: {count}")
 
-        lines.append("\nTop treningi:")
+        lines.append("\nTop trainings (top 3):")
         for t, count in self.report_data["most_popular_trainings"]:
             lines.append(f"  {t}: {count}")
 
-        lines.append("\nTop trenerzy:")
+        lines.append("\nTop trainers:")
         for t, count in self.report_data["top_trainers"]:
             lines.append(f"  {t}: {count}")
 
         with open(self.report_file, "w", encoding="utf-8") as f:
             f.write("\n".join(lines))
 
-        print(f"Raport zapisany w: {self.report_file}")
+        print(f"Report saved at: {self.report_file}")
 
 
 if __name__ == "__main__":

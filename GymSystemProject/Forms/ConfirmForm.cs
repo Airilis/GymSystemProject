@@ -1,41 +1,35 @@
 ﻿using GymSystemProject.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GymSystemProject.Services;
+
 namespace GymSystemProject.Forms
 {
 		public partial class ConfirmForm : Form
 		{
-			//	private Form userForm;
 				private EnrollmentalData data;
 				private Form previousForm;
-				///private LoginPage loginForm;
-				//private bool isLoggingOut = false;
+
 				public ConfirmForm(EnrollmentalData data, Form previousForm)
 				{
 						InitializeComponent();
 						this.data = data;
-						//this.userForm = userForm;
 						this.previousForm = previousForm;
+						this.StartPosition = FormStartPosition.CenterScreen;
 
 						lblSummary.Text =
-										$"Пользователь: {data.UserLogin}\n" +
-										$"Абонемент: {(data.MembershipActive ? "Активен" : "Не активен")}\n" +
-										$"Тренировка: {data.Training}\n" +
-										$"Тренер: {data.Trainer}\n" +
-										$"Дата: {data.TrainingDate:dd.MM.yyyy}";
+										$"User: {data.UserLogin}\n" +
+										$"Membership: {(data.MembershipActive ? "Active" : "Inactive")}\n" +
+										$"Training: {data.Training}\n" +
+										$"Trainer: {data.Trainer}\n" +
+										$"Date: {data.TrainingDate:dd.MM.yyyy}";
 				}
+
 				private void ConfirmForm_FormClosed(object sender, FormClosedEventArgs e)
 				{
 						Application.Exit();
 				}
+
 				private void btnConfirm_Click(object sender, EventArgs e)
 				{
 						EnrollmentRecord record = new EnrollmentRecord
@@ -48,17 +42,18 @@ namespace GymSystemProject.Forms
 						};
 
 						JsonStorage.SaveEnrollment(record);
+
 						MessageBox.Show(
-										"Вы успешно записаны на тренировку!",
-										"Готово",
+										"You have successfully enrolled in the training!",
+										"Done",
 										MessageBoxButtons.OK,
 										MessageBoxIcon.Information
 						);
 
-						// Возвращаемся на UserForm
+						// Return to UserForm
 						data.UserForm.Show();
 
-						// Закрываем всю цепочку
+						// Close this form
 						this.Close();
 				}
 
@@ -66,7 +61,7 @@ namespace GymSystemProject.Forms
 				{
 						if (data.LoginForm == null)
 						{
-								MessageBox.Show("LoginForm = null (ошибка передачи данных)");
+								MessageBox.Show("LoginForm is null (data transfer error)");
 								return;
 						}
 						data.LoginForm.ResetFields();
@@ -83,8 +78,13 @@ namespace GymSystemProject.Forms
 						}
 						else
 						{
-								MessageBox.Show("Предыдущая форма недоступна");
+								MessageBox.Show("Previous form is unavailable");
 						}
+				}
+
+				private void label1_Click(object sender, EventArgs e)
+				{
+						// Currently no action
 				}
 		}
 }

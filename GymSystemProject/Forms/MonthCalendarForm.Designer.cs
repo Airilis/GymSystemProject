@@ -41,6 +41,7 @@
 						monthCalendar.Location = new Point(299, 99);
 						monthCalendar.Name = "monthCalendar";
 						monthCalendar.TabIndex = 0;
+						monthCalendar.DateChanged += monthCalendar_DateChanged;
 						// 
 						// lblDayStatus
 						// 
